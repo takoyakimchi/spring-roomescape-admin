@@ -32,7 +32,7 @@ public class ReservationTimeRepository {
 
     public ReservationTime findById(Long id) {
         return jdbcTemplate.queryForObject(
-            "select id, start_at from reservation_time where id=?",
+            "SELECT id, start_at FROM reservation_time WHERE id=?",
             (resultSet, rowNum) -> new ReservationTime(
                 resultSet.getLong("id"),
                 LocalTime.parse(resultSet.getString("start_at"))
@@ -42,7 +42,7 @@ public class ReservationTimeRepository {
 
     public List<ReservationTime> findAll() {
         return jdbcTemplate.query(
-            "select id, start_at from reservation_time",
+            "SELECT id, start_at FROM reservation_time",
             (resultSet, rowNum) -> new ReservationTime(
                 resultSet.getLong("id"),
                 LocalTime.parse(resultSet.getString("start_at"))
@@ -51,6 +51,6 @@ public class ReservationTimeRepository {
     }
 
     public void delete(Long id) {
-        jdbcTemplate.update("delete from reservation_time where id = ?", id);
+        jdbcTemplate.update("DELETE FROM reservation_time WHERE id = ?", id);
     }
 }

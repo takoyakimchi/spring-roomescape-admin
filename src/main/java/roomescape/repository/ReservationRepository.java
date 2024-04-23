@@ -86,6 +86,6 @@ public class ReservationRepository {
     }
 
     public void delete(long id) {
-        jdbcTemplate.update("delete from reservation where id = ?", id);
+        jdbcTemplate.update("DELETE FROM reservation WHERE id = ?", id);
     }
 }
